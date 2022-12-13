@@ -1,0 +1,22 @@
+#ifndef MAIN_H
+#define MAIN_H
+/**
+ * File: main.h
+ *
+ * Desc: Header file for declaration of all functions
+ */
+
+int _putchar(char c);
+void print_alphabet(void);
+void _islower(int c);
+int _isalpha(int c);
+int print_sign(int n);
+int _abs(int);
+int print_last_digit(int);
+void jack_bauer(void);
+void time_table(void);
+int add(int, int);
+void print_to_98(int n);
+void print_time_table(int n);
+
+#endif
