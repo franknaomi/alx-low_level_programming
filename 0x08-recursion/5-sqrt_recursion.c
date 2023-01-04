@@ -1,34 +1,26 @@
 #include "main.h"
-int _sqrt(int n, int min, int max);
 /**
- * _sqrt_recursion - return natural square rooot of a number
- * @n: int to be squared
- * Return: square root
+ * _sqrt_recursion - returns natural square root of a number
+ * @n: integer
+ * Return: natural square root or -1 if no square root for n
  */
 int _sqrt_recursion(int n)
 {
-	if (n < 0)
-		return (-1);
-	if (n == 0 || n == 1)
-		return (n);
-	return (_sqrt(n, 1, n));
+	return (natural_square(n, 1));
 }
 /**
- * _sqrt - find square root
- * @n: int to be squared
- * @min: minimum value
- * @max: maximum value
- * Return: the square root
+ * natural_square - a function that help to find natural_square
+ * @x: integer
+ * @y: integer
+ * Return: square root or -1
  */
-int _sqrt(int n, int min, int max)
+int natural_square(int x, int y)
 {
-	int mid = (min + max) / 2;
+	int s = y * y;
 
-	if (mid * mid == n)
-		return (mid);
-	if (min == max)
+	if (s > x)
 		return (-1);
-	if (mid * mid > n)
-		return (_sqrt(n, min, mid - 1));
-	return (_sqrt(n, mid + 1, max));
+	if (s == x)
+		return (y);
+	return (natural_square(x, y + 1));
 }
