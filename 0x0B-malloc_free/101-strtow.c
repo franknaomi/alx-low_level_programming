@@ -63,3 +63,4 @@ void ch_free_grid(char **grid, unsigned int height)
 		aout[i] = NULL;
 		return (aout);
 	}
+}
