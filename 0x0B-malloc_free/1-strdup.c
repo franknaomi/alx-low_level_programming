@@ -32,7 +32,7 @@ char *_strdup(char *str)
 	j = 0;
 	while (j < len)
 	{
-		str_copy[j] = str[j]
+		str_copy[j] = str[j];
 			j++;
 	}
 	str_copy[j] = '\0';
