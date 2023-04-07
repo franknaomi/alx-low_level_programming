@@ -1,41 +1,32 @@
 #include "hash_tables.h"
-
 /**
- * free_array_item_content - a function that frees the item of a hash
- *                           table array
- * @item: a linked list containing collided items
- * Return: void
- */
-void free_array_item_content(hash_node_t **item)
-{
-	hash_node_t *temp;
-
-	while (*item != NULL)
-	{
-		temp = (*item)->next;
-		free((*item)->key);
-		free((*item)->value);
-		free(*item);
-		*item = temp;
-	}
-}
-/**
- * hash_table_delete - a function that deletes a hash table
- * @ht: the hash table to be deleted
- * Return: void
- */
+* hash_table_delete - function
+* @ht: hash table to delete
+*
+* Description: Function to delete a hash table.
+* Return: 0 (Success)
+*/
 void hash_table_delete(hash_table_t *ht)
 {
-	unsigned long i;
+	hash_node_t *moveNode, *temp;
+	unsigned long int index;
 
 	if (ht == NULL)
 		return;
 
-	for (i = 0; i < ht->size; i++)
+	for (index = 0; index < (ht->size); index++)
 	{
-		if (ht->array[i] != NULL)
+		moveNode = ht->array[index];
+		while (moveNode != NULL)
 		{
-			free_array_item_content(&(ht->array[i]));
+			temp = moveNode->next;
+			if (moveNode->key != NULL)
+				free(moveNode->key);
+			if (moveNode->value != NULL)
+				free(moveNode->value);
+			if (moveNode != NULL)
+				free(moveNode);
+			moveNode = temp;
 		}
 	}
 	free(ht->array);
